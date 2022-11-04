@@ -1,6 +1,9 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Description: Kong Mesh Control Plane on ECS
 Parameters:
+  AuthorizedAccountID:
+    Type: String
+    Description: WIP
   VPCStackName:
     Type: String
     Description:
@@ -335,6 +338,8 @@ Resources:
               Value: aws-iam
             - Name: KUMA_DP_SERVER_AUTH_USE_TOKEN_PATH
               Value: "true"
+            - Name: KMESH_AWSIAM_AUTHORIZEDACCOUNTIDS
+              Value: !Ref AuthorizedAccountID
           Secrets:
             - Name: KMESH_LICENSE
               ValueFrom: !Ref LicenseSecret
